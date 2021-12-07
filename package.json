@@ -1,0 +1,22 @@
+{
+  "name": "service-topup-game",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "cross-env DEBUG=service-topup-game:* & nodemon -r dotenv/config ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.6",
+    "debug": "~4.3.3",
+    "express": "~4.17.1",
+    "http-errors": "~1.8.1",
+    "morgan": "~1.10.0",
+    "pug": "^3.0.2"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "dotenv": "^10.0.0",
+    "nodemon": "^2.0.15"
+  }
+}
