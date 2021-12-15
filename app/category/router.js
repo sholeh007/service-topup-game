@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const { index } = require("./controller");
+const { index, create } = require("./controller");
 
-router.get("/", index);
+router.route("/category").get(index).post(create);
 
 module.exports = router;
