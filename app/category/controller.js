@@ -3,7 +3,7 @@ const Category = require("./model");
 module.exports = {
   async index(req, res, next) {
     try {
-      const data = await Category.find();
+      const data = await Category.find().sort({ createdAt: -1 });
 
       return res.status(200).json(data);
     } catch (error) {
