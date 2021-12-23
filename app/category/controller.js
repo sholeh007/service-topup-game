@@ -3,16 +3,22 @@ const Category = require("./model");
 module.exports = {
   async index(req, res, next) {
     try {
-      const { id } = req.query;
-      if (id) {
-        const category = await Category.findById({ _id: id });
-        if (!category)
-          return res.status(406).json({ message: "category not found" });
-        return res.status(200).json({ data: category });
-      }
       const data = await Category.find().sort({ createdAt: -1 });
 
       return res.status(200).json(data);
+    } catch (error) {
+      next(error);
+    }
+  },
+  async single(req, res, next) {
+    try {
+      const { id } = req.params;
+      const category = await Category.findById({ _id: id });
+
+      if (!category)
+        return res.status(406).json({ message: "category not found" });
+
+      return res.status(200).json({ data: category });
     } catch (error) {
       next(error);
     }
