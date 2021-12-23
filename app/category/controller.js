@@ -3,7 +3,11 @@ const Category = require("./model");
 module.exports = {
   async index(req, res, next) {
     try {
-      const data = await Category.find().sort({ createdAt: -1 });
+      const { limit = 10, skip = 0 } = req.query;
+      const data = await Category.find()
+        .sort({ createdAt: -1 })
+        .limit(Number(limit))
+        .skip(Number(skip));
 
       return res.status(200).json(data);
     } catch (error) {
