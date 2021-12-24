@@ -49,7 +49,7 @@ module.exports = {
     try {
       const { id } = req.params;
       const { name } = req.body;
-      console.log(name);
+
       const category = await Category.findById({ _id: id });
 
       if (!category)
